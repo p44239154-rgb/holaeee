@@ -1,0 +1,373 @@
+/* Variables de color Cyber */
+:root {
+    --dark-bg: #0b0f19;
+    --card-bg: #161b22;
+    --neon-accent: #00f2ff;
+    --text-main: #ffffff;
+    --text-dim: #8b949e;
+}
+
+body {
+    background-color: var(--dark-bg);
+    color: var(--text-main);
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    margin: 0;
+    padding: 20px;
+    /* Asegura que el contenido respire y esté centrado si es necesario */
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    text-align: center;
+    padding: 40px 0;
+}
+
+.jne-logo {
+    width: 80px;
+    margin-bottom: 15px;
+}
+
+header h1 {
+    font-size: 2.2rem;
+    color: var(--neon-accent);
+    text-shadow: 0 0 10px rgba(0, 242, 255, 0.3);
+    margin: 0;
+}
+
+header p { color: var(--text-dim); }
+
+/* --- GRID DE PARTIDOS (INICIO) --- */
+.grid-partidos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 15px;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.card-partido {
+    background: var(--card-bg);
+    border: 1px solid #30363d;
+    border-radius: 12px;
+    padding: 15px;
+    text-decoration: none;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-partido img {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    background: white;
+    padding: 5px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
+
+.card-partido h3 {
+    font-size: 0.85rem;
+    margin: 0;
+    text-align: center;
+    line-height: 1.2;
+}
+
+.card-partido:hover {
+    transform: translateY(-5px);
+    border-color: var(--neon-accent);
+    box-shadow: 0 0 20px rgba(0, 242, 255, 0.2);
+    background: #1c2128;
+}
+
+/* --- PÁGINA DE CATEGORÍAS (CÍRCULOS) --- */
+.flex-circulos {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-top: 100px;
+}
+
+.circulo {
+    width: 180px;
+    height: 180px;
+    border: 3px solid var(--neon-accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    transition: 0.4s;
+    background: rgba(0, 242, 255, 0.05);
+}
+
+.circulo:hover {
+    background: var(--neon-accent);
+    color: #000;
+    box-shadow: 0 0 30px var(--neon-accent);
+}
+
+/* --- SECCIÓN DE CANDIDATOS (PRESIDENTES Y SENADORES) --- */
+.grid-candidatos {
+    display: grid;
+    /* Ajustado para que se centre si hay pocos elementos */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 320px)); 
+    justify-content: center; /* ESTO CENTRA LAS IMÁGENES AL MEDIO */
+    gap: 30px;
+    padding: 40px;
+    max-width: 1300px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.card-candidato {
+    background: linear-gradient(145deg, #161b22, #0d1117);
+    border: 2px solid #30363d;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    flex-direction: column;
+}
+
+.card-candidato:hover {
+    transform: translateY(-12px);
+    border-color: var(--neon-accent);
+    box-shadow: 0 0 30px rgba(0, 242, 255, 0.3), 
+                0 0 10px rgba(0, 242, 255, 0.1);
+}
+
+.foto-marco {
+    width: 100%;
+    height: 380px;
+    position: relative;
+    overflow: hidden;
+    background: #000;
+}
+
+.foto-marco img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    transition: transform 0.6s ease, filter 0.6s ease;
+    filter: grayscale(20%) contrast(1.1); 
+}
+
+.foto-marco::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(to top, rgba(0, 242, 255, 0.4), transparent);
+    pointer-events: none;
+    transition: opacity 0.4s;
+}
+
+.card-candidato:hover .foto-marco img {
+    transform: scale(1.1) rotate(1deg);
+    filter: grayscale(0%) contrast(1.2) brightness(1.1);
+}
+
+.card-candidato:hover .foto-marco::after {
+    opacity: 0.8;
+}
+
+.info-candidato {
+    padding: 25px 15px;
+    text-align: center;
+    position: relative;
+    background: #161b22;
+}
+
+.info-candidato .numero {
+    position: absolute;
+    top: -25px;
+    right: 20px;
+    background: var(--neon-accent);
+    color: #0b0f19;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 1.2rem;
+    border-radius: 50%;
+    border: 4px solid #161b22;
+    box-shadow: 0 0 15px var(--neon-accent);
+    z-index: 2;
+}
+
+.info-candidato h3 {
+    margin: 5px 0;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--neon-accent);
+}
+
+.info-candidato p {
+    margin: 5px 0 0;
+    color: var(--text-dim);
+    font-weight: 300;
+    font-size: 0.85rem;
+}
+
+/* --- BOTÓN VOLVER --- */
+.btn-back {
+    display: inline-block;
+    margin: 20px auto;
+    padding: 12px 25px;
+    border: 2px solid var(--neon-accent);
+    color: var(--neon-accent);
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: 0.3s;
+    text-align: center;
+}
+
+.btn-back:hover {
+    background: var(--neon-accent);
+    color: #000;
+    box-shadow: 0 0 20px var(--neon-accent);
+}
+
+/* --- FORMATO DE LISTA PARA DIPUTADOS --- */
+.lista-diputados {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    width: 100%;
+}
+
+.fila-diputado {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.fila-diputado:hover {
+    border-color: var(--neon-accent);
+    transform: translateX(10px);
+    box-shadow: -5px 0 15px var(--neon-accent);
+}
+
+.foto-pequena {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid #30363d;
+    margin-right: 20px;
+    background: white; /* Para que el logo resalte */
+}
+
+.foto-pequena img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 5px;
+}
+
+.info-fila {
+    flex-grow: 1;
+}
+
+.info-fila h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: white;
+}
+
+.info-fila p {
+    margin: 0;
+    color: var(--text-dim);
+    font-size: 0.8rem;
+}
+
+.numero-diputado {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--neon-accent);
+    opacity: 0.6;
+}
+
+.fila-diputado:hover .numero-diputado {
+    opacity: 1;
+    text-shadow: 0 0 10px var(--neon-accent);
+}
+
+/* --- FOOTER MODERNO Y ANIMADO --- */
+footer {
+    margin-top: 50px;
+    padding: 30px;
+    text-align: center;
+    border-top: 1px solid #30363d;
+    width: 100%;
+}
+
+.footer-content p {
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.autor {
+    display: inline-block;
+    font-weight: 900;
+    position: relative;
+    cursor: default;
+    
+    /* Efecto de degradado */
+    background: linear-gradient(90deg, #00f2ff, #0077ff, #00f2ff);
+    background-size: 200% auto;
+    
+    /* Recorte de texto (Aquí estaba el warning) */
+    -webkit-background-clip: text;
+    background-clip: text; 
+    -webkit-text-fill-color: transparent;
+    
+    /* Animación y transiciones */
+    animation: flow 3s linear infinite;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* Efecto al pasar el mouse */
+.autor:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 8px var(--neon-accent));
+}
+
+/* Movimiento del brillo */
+@keyframes flow {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+}
